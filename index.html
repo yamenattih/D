@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>مختبر أعمار الصخور</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="brand">🪨 مختبر أعمار الصخور</div>
+  <div class="subtitle">الصف السابع • العلوم • Web App تعليمي</div>
+</header>
+
+<main>
+<section id="home" class="screen active">
+  <div class="hero">
+    <div class="earth">🌍</div>
+    <h1>العمر النسبي والعمر المطلق للصخور</h1>
+    <p>تعلّم، جرّب، ثم اختبر معلوماتك في مختبر جيولوجي تفاعلي.</p>
+    <button onclick="show('learn')">ابدأ التعلم 🚀</button>
+  </div>
+  <div class="cards">
+    <article><b>🧱 العمر النسبي</b><span>نحدد أي الصخور أقدم أو أحدث دون تحديد عمرها بالسنوات.</span></article>
+    <article><b>⏳ العمر المطلق</b><span>نحدد عمر الصخر بقيمة زمنية، مثل 50 مليون سنة.</span></article>
+    <article><b>🎮 تحديات</b><span>اختبر مهاراتك في ترتيب الطبقات والقاطع والمقطوع.</span></article>
+  </div>
+</section>
+
+<section id="learn" class="screen">
+  <h2>📚 تعلّم المفاهيم</h2>
+  <div class="lesson-grid">
+    <article class="lesson"><h3>🧱 مبدأ تعاقب الطبقات</h3><p>في الطبقات الرسوبية غير المشوهة، تكون الطبقة السفلى أقدم من الطبقة التي تعلوها.</p></article>
+    <article class="lesson"><h3>✂️ مبدأ القاطع والمقطوع</h3><p>إذا قطع جسم صخري طبقات أخرى، فإن الجسم القاطع أحدث من الصخور التي قطعها.</p></article>
+    <article class="lesson"><h3>🔗 المضاهاة</h3><p>نقارن الطبقات أو الأحافير بين مناطق مختلفة لمعرفة الصخور المتناظرة والعلاقات الزمنية بينها.</p></article>
+    <article class="lesson"><h3>⏳ العمر المطلق</h3><p>هو عمر الصخر أو الحدث الجيولوجي بوحدة زمنية محددة، مثل مليون سنة.</p></article>
+  </div>
+  <button onclick="show('layers')">ابدأ المحاكاة 🧪</button>
+</section>
+
+<section id="layers" class="screen">
+  <h2>🧪 مختبر الطبقات</h2>
+  <p>اضغط على الطبقات لمعرفة ترتيبها الزمني.</p>
+  <div class="rock-stack">
+    <div class="rock A" onclick="explainLayer('A')">A</div>
+    <div class="rock B" onclick="explainLayer('B')">B</div>
+    <div class="rock C" onclick="explainLayer('C')">C</div>
+    <div class="rock D" onclick="explainLayer('D')">D</div>
+  </div>
+  <div id="layerInfo" class="info">اختر طبقة.</div>
+  <div class="controls">
+    <button onclick="show('crosscut')">تجربة القاطع ✂️</button>
+    <button class="secondary" onclick="show('quiz')">اذهب للاختبار 🎯</button>
+  </div>
+</section>
+
+<section id="crosscut" class="screen">
+  <h2>✂️ القاطع والمقطوع</h2>
+  <p>في الشكل، القاطع البرتقالي يمر عبر الطبقات. فكّر: أيهما أحدث؟</p>
+  <div class="cross-scene">
+    <div class="layer l1"></div><div class="layer l2"></div><div class="layer l3"></div>
+    <div class="intrusion"></div>
+  </div>
+  <div class="choice-row">
+    <button onclick="crossAnswer(false)">الطبقات أقدم</button>
+    <button onclick="crossAnswer(true)">القاطع أحدث</button>
+  </div>
+  <div id="crossResult" class="result"></div>
+  <button class="secondary" onclick="show('absolute')">انتقل للعمر المطلق ⏳</button>
+</section>
+
+<section id="absolute" class="screen">
+  <h2>⏳ العمر المطلق</h2>
+  <div class="age-card">
+    <div class="number">50</div><div>مليون سنة</div>
+  </div>
+  <p>إذا كان عمر القاطع <b>50 مليون سنة</b>، فما العبارة الصحيحة عن طبقة صخرية قطعها؟</p>
+  <div class="choice-row">
+    <button onclick="absoluteAnswer(false)">أحدث من 50 مليون سنة</button>
+    <button onclick="absoluteAnswer(true)">أقدم من 50 مليون سنة</button>
+  </div>
+  <div id="absoluteResult" class="result"></div>
+  <button class="secondary" onclick="show('quiz')">ابدأ الاختبار النهائي 🎯</button>
+</section>
+
+<section id="quiz" class="screen">
+  <h2>🎯 الاختبار النهائي</h2>
+  <div id="quizBox"></div>
+</section>
+
+<section id="result" class="screen">
+  <div class="hero">
+    <div class="earth">🏆</div>
+    <h1>انتهى الاختبار!</h1>
+    <div id="scoreText"></div>
+    <button onclick="startQuiz()">إعادة الاختبار 🔄</button>
+    <button class="secondary" onclick="show('home')">العودة للرئيسية</button>
+  </div>
+</section>
+</main>
+
+<footer>مختبر أعمار الصخور • نموذج تعليمي للصف السابع</footer>
+<script src="script.js"></script>
+</body>
+</html>
